@@ -1,0 +1,45 @@
+name: Generate and Send Daily Newsletter
+
+on:
+  schedule:
+    # Run daily at 8:00 AM UTC
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  newsletter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # SEND_EMAIL=1: generate today's newsletter if missing, then email it to
+      # subscribers. If the 6-hourly intelligence-sync already built today's
+      # file, this still emails it (no more silently skipped deliveries).
+      - name: Generate and send newsletter
+        env:
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          ADMIN_KEY: ${{ secrets.ADMIN_KEY }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          SEND_EMAIL: "1"
+        run: python3 scripts/generate-newsletter.py
+
+      - name: Commit and push newsletter
+        run: |
+          git config user.name "AcreetionOS Bot"
+          git config user.email "bot@acreetionos.org"
+          git add newsletters/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Daily newsletter $(date +%Y-%m-%d)"
+            git push
+          fi

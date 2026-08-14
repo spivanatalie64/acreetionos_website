@@ -1,0 +1,51 @@
+# Node modules
+node_modules/
+
+# Test artifacts
+test-results/
+playwright-report/
+
+# Temporary files
+temp/
+*.tmp
+*.log
+
+# Dev tools
+format_html.py
+.env
+.env.local
+*.secret
+secrets/
+
+# Flasher build output
+flasher/dist/
+flasher/node_modules/
+*.pem
+.cache
+
+# Next.js RSC debug artifacts
+acreetionos-news-tracker/__next.*
+acreetionos-news-tracker/_not-found.txt
+acreetionos-news-tracker/_not-found/
+acreetionos-news-tracker/index.txt
+
+# Cloudflare
+.wrangler/
+
+# Local testing and development artifacts
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.pyc
+__pycache__/
+.envrc
+.direnv/
+*.local
+local/
+dev/
+dist/
+*.local.js

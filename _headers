@@ -1,0 +1,26 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: browsing-topics=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Cache-Control: public, max-age=3600
+
+# JS/CSS: 1 hour — filenames are NOT content-hashed, so "immutable" caching
+# would serve stale code to returning visitors for a full year.
+*.js
+  Cache-Control: public, max-age=3600
+*.css
+  Cache-Control: public, max-age=3600
+
+# Images/fonts: 1 day — same reasoning, slightly longer is fine.
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.svg
+*.webp
+*.woff
+*.woff2
+  Cache-Control: public, max-age=86400

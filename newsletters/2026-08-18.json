@@ -1,0 +1,5 @@
+{
+  "subject": "Daily AcreetionOS Update -- August 18, 2026",
+  "date_display": "August 18, 2026",
+  "body": "Daily AcreetionOS Update - August 18, 2026. Hello AcreetionOS community, I hope you're all enjoying a productive week. Here's what's new in our projects and ecosystem.  \n\nOur team has just released a refreshed ISO build that incorporates the latest Calamares customizations and a streamlined boot sequence. We also shipped a patch to the kernel configuration scripts that reduces memory overhead by roughly 3 percent on standard hardware. All changes are documented on the git repository with tag v1.1.2 for easy reference.  \n\nPrivacy remains a core focus, so we introduced a default opt\u2011out for telemetry\u2011related services in the system image. The new release also bundles an updated version of the XLibre stack that improves compatibility with the latest Cinnamon themes. These updates are available for download from the official site without"
+}

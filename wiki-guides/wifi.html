@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WiFi — AcreetionOS Guide</title>
+  <meta name="description" content="Connecting to WiFi on AcreetionOS with NetworkManager, including troubleshooting.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://acreetionos.org/wiki-guides/wifi.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://acreetionos.org/wiki-guides/wifi.html">
+  <meta property="og:title" content="WiFi — AcreetionOS Guide">
+  <meta property="og:site_name" content="AcreetionOS">
+  <meta property="og:image" content="https://acreetionos.org/og-image.webp">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "WiFi — AcreetionOS Guide",
+  "description": "Connecting to WiFi on AcreetionOS with NetworkManager, including troubleshooting.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "AcreetionOS",
+    "url": "https://acreetionos.org",
+    "logo": {"@type": "ImageObject", "url": "https://acreetionos.org/logo.webp"}
+  },
+  "mainEntityOfPage": "https://acreetionos.org/wiki-guides/wifi.html",
+  "inLanguage": "en"
+}
+  </script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; line-height: 1.7; color: #ddd; background: #121212; }
+    h1 { color: #2ecc71; font-size: 1.7rem; }
+    h2, h3, h4 { color: #2ecc71; margin-top: 1.8rem; }
+    pre { background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 1rem; overflow-x: auto; }
+    code { background: #1a1a1a; padding: .1rem .35rem; border-radius: 4px; font-size: .9em; }
+    a { color: #2ecc71; }
+    .back { display: block; margin: 1.5rem 0; }
+    .note { color: #888; font-size: .85rem; border-top: 1px solid #222; margin-top: 2.5rem; padding-top: 1rem; }
+  </style>
+</head>
+<body>
+  <a class="back" href="../wiki.html">← AcreetionOS Wiki</a>
+  <article>
+    <h1>WiFi</h1>
+    <h2>Connect to WiFi on AcreetionOS</h2>
+<h3>1. What is this?</h3>
+<p>This guide will show you how to connect to a wireless network (WiFi) on your AcreetionOS computer. You can use either the easy graphical method or the advanced terminal method.</p>
+<h3>2. What you need</h3>
+<ul>
+<li>A working WiFi adapter (built-in or USB)</li>
+<li>The name (SSID) and password of the WiFi network you want to join</li>
+<li>An internet connection if you need to install additional software (rare)</li>
+</ul>
+<h3>3. Step-by-step (GUI Method)</h3>
+<h4>Step 1: Turn on WiFi</h4>
+<ul>
+<li>Click the **network icon** in the bottom-right corner of your screen (it looks like a signal bar or a computer screen with waves).</li>
+<li>If it says &quot;WiFi Off&quot;, click it and select **Turn WiFi On**.</li>
+</ul>
+<h4>Step 2: Find your network</h4>
+<ul>
+<li>Click the **network icon** again to open the WiFi list.</li>
+<li>Wait for a list of available networks to appear.</li>
+</ul>
+<h4>Step 3: Connect to a network</h4>
+<ul>
+<li>Find your network's name (SSID) in the list and click it.</li>
+<li>A window will pop up asking for the password.</li>
+<li>Type the WiFi password carefully (check &quot;Show password&quot; if you want to see what you're typing).</li>
+<li>Click **Connect**.</li>
+</ul>
+<h4>Step 4: Verify connection</h4>
+<ul>
+<li>The network icon should now show a full signal.</li>
+<li>Open a web browser and try visiting any website to confirm you're online.</li>
+</ul>
+<h3>4. Step-by-step (Advanced - Terminal Method)</h3>
+<p>If the GUI method doesn't work or you prefer using commands:</p>
+<h4>Step 1: Check if WiFi is enabled</h4>
+<pre>
+nmcli radio wifi
+</pre>
+<p>If it says &quot;enabled&quot;, you're good. If it says &quot;disabled&quot;, enable it with:</p>
+<pre>
+nmcli radio wifi on
+</pre>
+<h4>Step 2: Scan for networks</h4>
+<pre>
+nmcli device wifi list
+</pre>
+<p>This will show all available networks around you.</p>
+<h4>Step 3: Connect to a network</h4>
+<p>Replace <code>YOUR_SSID</code> with your network name and <code>YOUR_PASSWORD</code> with the password:</p>
+<pre>
+nmcli device wifi connect YOUR_SSID password YOUR_PASSWORD
+</pre>
+<h4>Step 4: Verify connection</h4>
+<pre>
+nmcli connection show
+</pre>
+<p>You should see your network listed as connected.</p>
+<h3>5. Troubleshooting</h3>
+<h4>Problem: WiFi won't turn on</h4>
+<ul>
+<li>**Solution**: Try restarting the NetworkManager service:</li>
+<pre>
+  sudo systemctl restart NetworkManager
+</pre>
+</ul>
+<h4>Problem: Can't find any networks</h4>
+<ul>
+<li>**Solution**: Make sure your WiFi adapter is properly connected. Try:</li>
+<pre>
+  sudo rfkill unblock wifi
+</pre>
+</ul>
+<h4>Problem: Wrong password</h4>
+<ul>
+<li>**Solution**: Double-check the password. WiFi passwords are case-sensitive. Try connecting again.</li>
+</ul>
+<h4>Problem: Connected but no internet</h4>
+<ul>
+<li>**Solution**: Try restarting your router, or check if other devices can connect to the same network.</li>
+</ul>
+<h4>Problem: WiFi icon missing from panel</h4>
+<ul>
+<li>**Solution**: Right-click the panel, select &quot;Panel Settings&quot; → &quot;Applets&quot;, and make sure the &quot;Network&quot; applet is enabled.</li>
+</ul>
+<h4>Need more help?</h4>
+<p>If none of these steps work, you can ask for help on the AcreetionOS community forum or check the Arch Wiki for more advanced troubleshooting steps.</p>
+  </article>
+  <p class="note">Generated by AcreetionOS AI (free model routing). Interactive search: <a href="../wiki.html">wiki.acreetionos.org</a> · <a href="../docs.html">Documentation</a></p>
+</body>
+</html>

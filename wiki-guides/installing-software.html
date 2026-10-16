@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installing software — AcreetionOS Guide</title>
+  <meta name="description" content="How to install software on AcreetionOS using the GUI package manager, pacman, and the AUR.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://acreetionos.org/wiki-guides/installing-software.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://acreetionos.org/wiki-guides/installing-software.html">
+  <meta property="og:title" content="Installing software — AcreetionOS Guide">
+  <meta property="og:site_name" content="AcreetionOS">
+  <meta property="og:image" content="https://acreetionos.org/og-image.webp">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Installing software — AcreetionOS Guide",
+  "description": "How to install software on AcreetionOS using the GUI package manager, pacman, and the AUR.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "AcreetionOS",
+    "url": "https://acreetionos.org",
+    "logo": {"@type": "ImageObject", "url": "https://acreetionos.org/logo.webp"}
+  },
+  "mainEntityOfPage": "https://acreetionos.org/wiki-guides/installing-software.html",
+  "inLanguage": "en"
+}
+  </script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; line-height: 1.7; color: #ddd; background: #121212; }
+    h1 { color: #2ecc71; font-size: 1.7rem; }
+    h2, h3, h4 { color: #2ecc71; margin-top: 1.8rem; }
+    pre { background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 1rem; overflow-x: auto; }
+    code { background: #1a1a1a; padding: .1rem .35rem; border-radius: 4px; font-size: .9em; }
+    a { color: #2ecc71; }
+    .back { display: block; margin: 1.5rem 0; }
+    .note { color: #888; font-size: .85rem; border-top: 1px solid #222; margin-top: 2.5rem; padding-top: 1rem; }
+  </style>
+</head>
+<body>
+  <a class="back" href="../wiki.html">← AcreetionOS Wiki</a>
+  <article>
+    <h1>Installing software</h1>
+    <h2>Installing Software on AcreetionOS (Cinnamon Desktop)</h2>
+<h3>1. What is this?</h3>
+<p>This guide teaches you how to install software on <strong>AcreetionOS</strong>, an Arch-based Linux distribution featuring the Cinnamon desktop environment. Whether you're a complete beginner or have some experience, these steps will help you add new programs to your system using both graphical (GUI) and terminal commands.</p>
+<p>---</p>
+<h3>2. What You Need</h3>
+<p>Before starting, ensure you have:</p>
+<ul>
+<li>**Root/sudo privileges** – Most software installations require administrative rights.</li>
+<li>**Internet connection** – To download packages from repositories.</li>
+<li>**A working AcreetionOS system** – Freshly installed or up-to-date.</li>
+<li>**Optional but recommended**:</li>
+<li>A text editor (e.g., `nano`, `vim`) for manual file management.</li>
+<li>Terminal access (essential for advanced operations).</li>
+</ul>
+<p>On AcreetionOS, you can manage packages via the built-in <strong>Software Manager</strong> (GUI) or directly through the <strong>pacman</strong> command-line tool.</p>
+<p>---</p>
+<h3>3. Step-by-Step Installation Guide</h3>
+<h4>Method A: Using the Software Manager (GUI) — Beginner Friendly</h4>
+<p>This method uses the graphical interface, making it easy for newcomers.</p>
+<ol>
+<li>**Open the Software Manager**</li>
+<li>Click the **Start menu** (or press `Alt + F4` then select &quot;Software&quot; if shortcut is set).</li>
+<li>Alternatively, search for &quot;Software Manager&quot; in the application launcher.</li>
+</ul>
+<ol>
+<li>**Browse or Search for the Application**</li>
+<li>In the main window, click **&quot;Install&quot;** at the top left.</li>
+<li>Type the name of the software you want (e.g., &quot;Google Chrome&quot;, &quot;VLC Media Player&quot;, &quot;LibreOffice&quot;).</li>
+<li>Select the desired version and click **&quot;Install&quot;**.</li>
+</ul>
+<ol>
+<li>**Wait for Installation**</li>
+<li>The Software Manager will download and install the program automatically.</li>
+<li>Once complete, the app icon will appear in your Start menu.</li>
+</ul>
+<ol>
+<li>**Launch the Application**</li>
+<li>Find the newly installed app in the list or start menu.</li>
+<li>Double-click to open it and begin using.</li>
+</ul>
+<p>&gt; <strong>Tip:</strong> For many popular apps, AcreetionOS has pre-configured versions available in the official repositories (<code>community</code> and <code>extra</code> groups), so no manual compilation is required.</p>
+<p>---</p>
+<h4>Method B: Using Terminal (Advanced) — Pacman Command Line</h4>
+<p>This approach gives you more control and works even when the GUI is unavailable.</p>
+<h5>Step 1: Update Your Package List</h5>
+<pre>
+sudo pacman -Syu
+</pre>
+<p>This ensures all your system packages are up to date before installing anything new.</p>
+<h5>Step 2: Search for the Software</h5>
+<pre>
+sudo pacman -Ss &lt;software-name&gt;
+</pre>
+<p>Replace <code>&lt;software-name&gt;</code> with what you're looking for (e.g., <code>chromium</code>, <code>vlc</code>, <code>libreoffice</code>). This shows available versions and their sources.</p>
+<h5>Step 3: Install the Software</h5>
+<p>Once you find the correct package name (e.g., <code>vlc</code>), run:</p>
+<pre>
+sudo pacman -S &lt;package-name&gt;
+</pre>
+<p>For example:</p>
+<pre>
+sudo pacman -S vlc
+</pre>
+<h5>Step 4: Verify Installation</h5>
+<p>After installation completes, check that the program is available:</p>
+<pre>
+which &lt;app-name&gt;  # e.g., which vlc
+</pre>
+<p>Or simply try launching it from the terminal:</p>
+<pre>
+vlc &amp;
+</pre>
+<p>---</p>
+<h3>4. Troubleshooting</h3>
+<p>| Issue | Possible Cause | Solution |</p>
+<p>|-------|----------------|----------|</p>
+<p>| <strong>Package not found</strong> | Not in default repositories | Add a repository (e.g., <code>pacman-mirrors</code>) or compile from source. |</p>
+<p>| <strong>Installation fails with &quot;permission denied&quot;</strong> | Missing sudo/root privileges | Use <code>sudo</code> prefix before commands like <code>pacman -S</code>. |</p>
+<p>| <strong>App doesn't launch after installation</strong> | Missing dependencies | Run <code>sudo pacman -Syu</code> again to update all packages. |</p>
+<p>| <strong>Software crashes immediately</strong> | Incompatible version or missing libraries | Check the error</p>
+  </article>
+  <p class="note">Generated by AcreetionOS AI (free model routing). Interactive search: <a href="../wiki.html">wiki.acreetionos.org</a> · <a href="../docs.html">Documentation</a></p>
+</body>
+</html>

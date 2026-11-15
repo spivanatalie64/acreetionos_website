@@ -24,3 +24,6 @@
 *.woff
 *.woff2
   Cache-Control: public, max-age=86400
+
+site.webmanifest
+  Content-Type: application/manifest+json

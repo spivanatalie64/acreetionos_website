@@ -1,0 +1,18 @@
+{
+  "name": "AcreetionOS",
+  "short_name": "AcreetionOS",
+  "description": "Arch Linux done right — a beautiful, strong, and clean distribution.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "icons": [
+    {
+      "src": "/acreetionoslogo.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ]
+}
